@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using QuizDesk.Domain.Entities;
 
 namespace QuizDesk.Domain.Interfaces
 {
-    internal class IUserRepository
+    public interface IUserRepository : IRepository<User>
     {
+        Task<User?> GetByEmailAsync(string email);
+        Task<bool> EmailExistsAsync(string email);
+        Task<User?> GetUserWithRolesAsync(Guid userId);
     }
 }
