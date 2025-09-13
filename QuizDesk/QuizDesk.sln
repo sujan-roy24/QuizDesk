@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36414.22 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizDesk.API", "QuizDesk.API\QuizDesk.API.csproj", "{5229E755-FDDA-4AFF-9B6A-21369301F2C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizDesk.Domain", "QuizDesk.Domain\QuizDesk.Domain.csproj", "{626F8E12-E653-4F4E-A5A6-511689112640}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizDesk.Application", "QuizDesk.Application\QuizDesk.Application.csproj", "{F2677086-91B7-48EC-A29A-AB0BAAAF6925}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizDesk.Infrastructure", "QuizDesk.Infrastructure\QuizDesk.Infrastructure.csproj", "{F4813A38-F1A5-4014-BE40-ACB0DC38D0B5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5229E755-FDDA-4AFF-9B6A-21369301F2C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5229E755-FDDA-4AFF-9B6A-21369301F2C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5229E755-FDDA-4AFF-9B6A-21369301F2C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5229E755-FDDA-4AFF-9B6A-21369301F2C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{626F8E12-E653-4F4E-A5A6-511689112640}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{626F8E12-E653-4F4E-A5A6-511689112640}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{626F8E12-E653-4F4E-A5A6-511689112640}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{626F8E12-E653-4F4E-A5A6-511689112640}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2677086-91B7-48EC-A29A-AB0BAAAF6925}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2677086-91B7-48EC-A29A-AB0BAAAF6925}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2677086-91B7-48EC-A29A-AB0BAAAF6925}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2677086-91B7-48EC-A29A-AB0BAAAF6925}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4813A38-F1A5-4014-BE40-ACB0DC38D0B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4813A38-F1A5-4014-BE40-ACB0DC38D0B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4813A38-F1A5-4014-BE40-ACB0DC38D0B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4813A38-F1A5-4014-BE40-ACB0DC38D0B5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {45F461CD-C8D7-409A-82F5-1159C0839EC9}
+	EndGlobalSection
+EndGlobal
