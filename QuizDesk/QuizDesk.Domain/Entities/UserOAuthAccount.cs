@@ -17,7 +17,7 @@ namespace QuizDesk.Domain.Entities
         public virtual User User { get; private set; }
         
         private UserOAuthAccount() { }
-        internal static UserOAuthAccount Create(int userId, string provider, string providerUserId, Email email, string? accessToken = null, string? refreshToken = null, DateTime? tokenExpiresAt = null, string? profileData = null)
+        public static UserOAuthAccount Create(int userId, string provider, string providerUserId, Email email, string? accessToken = null, string? refreshToken = null, DateTime? tokenExpiresAt = null, string? profileData = null)
         {
             return new UserOAuthAccount
             {

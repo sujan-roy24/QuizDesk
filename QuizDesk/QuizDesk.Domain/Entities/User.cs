@@ -18,7 +18,7 @@ namespace QuizDesk.Domain.Entities
         public virtual ICollection<UserOAuthAccount> OAuthAccounts { get; private set; } = new List<UserOAuthAccount>();
 
         private User() { }
-        internal static User Create(Email email, string fullName, UserRole role, AuthMethod authMethod) 
+        public static User Create(Email email, string fullName, UserRole role, AuthMethod authMethod) 
         {
             return new User
             {
