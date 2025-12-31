@@ -11,19 +11,5 @@ namespace QuizDesk.Application.Features.Auth.DTOs
         public string? AvatarUrl { get; set; }
         public bool EmailVerified { get; set; }
         public DateTime CreatedAt { get; set; }
-
-        public static UserDto FromEntity(User user)
-        {
-            return new UserDto
-            {
-                Id = user.Id,
-                Email = user.Email,
-                FullName = user.FullName,
-                Role = user.Role.ToString(),
-                AvatarUrl = user.AvatarUrl,
-                EmailVerified = user.EmailVerified,
-                CreatedAt = user.CreatedAt
-            };
-        }
     }
 }
