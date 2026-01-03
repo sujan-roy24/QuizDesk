@@ -4,6 +4,6 @@
     {
         Google = 1,
         Microsoft = 2,
-        Github = 3
+        GitHub = 3
     }
 }
