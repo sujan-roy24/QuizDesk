@@ -1,7 +1,4 @@
-﻿
-using QuizDesk.Domain.Enums;
-
-namespace QuizDesk.Application.Features.Auth.DTOs
+﻿namespace QuizDesk.Application.Contracts.Auth
 {
     public class RegisterRequest
     {

@@ -1,6 +1,4 @@
-﻿using QuizDesk.Domain.Entities;
-
-namespace QuizDesk.Application.Features.Auth.DTOs
+﻿namespace QuizDesk.Application.Contracts.Auth
 {
     public class UserDto
     {

@@ -1,9 +1,9 @@
-﻿using QuizDesk.Application.Features.Auth.DTOs;
+﻿using QuizDesk.Application.Contracts.Auth;
 using QuizDesk.Domain.Entities;
 
-namespace QuizDesk.Application.Common.Mappings
+namespace QuizDesk.Application.Mappings
 {
-    public static class UserToDtoMapper
+    public static class UserToDto
     {
         public static UserDto ToDto(this User user)
         {

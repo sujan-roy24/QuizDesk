@@ -1,6 +1,4 @@
-﻿using QuizDesk.Application.DTOs;
-
-namespace QuizDesk.Application.Features.Auth.DTOs
+﻿namespace QuizDesk.Application.Contracts.Auth
 {
     public class AuthResponse
     {

@@ -1,4 +1,4 @@
-﻿namespace QuizDesk.Application.Common.Interfaces
+﻿namespace QuizDesk.Application.Abstractions
 {
     public interface IUnitOfWork
     {
