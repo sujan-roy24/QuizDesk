@@ -1,4 +1,4 @@
-﻿using QuizDesk.Application.Contracts.Auth;
+﻿using QuizDesk.Application.DTOs.Auth;
 
 namespace QuizDesk.Application.Interfaces.Auth
 {

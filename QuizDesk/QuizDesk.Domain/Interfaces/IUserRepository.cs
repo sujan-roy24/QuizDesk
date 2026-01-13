@@ -1,4 +1,5 @@
 ﻿using QuizDesk.Domain.Entities;
+using QuizDesk.Domain.Enums;
 using QuizDesk.Domain.ValueObjects;
 
 namespace QuizDesk.Domain.Interfaces
@@ -8,6 +9,6 @@ namespace QuizDesk.Domain.Interfaces
         Task<User?> GetByEmailAsync(Email email, CancellationToken cancellationToken = default);
         Task<bool> ExistsByEmailAsync(Email email, CancellationToken cancellationToken = default);
         Task<User?> GetWithOAuthAccountsAsync(int id, CancellationToken cancellationToken = default);
-        Task<IReadOnlyList<User>> GetUsersByRoleAsync(string role, CancellationToken cancellationToken = default);
+        Task<IReadOnlyList<User>> GetUsersByRoleAsync(UserRole role, CancellationToken cancellationToken = default);
     }
 }

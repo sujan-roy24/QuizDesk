@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using QuizDesk.Application.Abstractions;
-using QuizDesk.Application.Contracts.Auth;
+using QuizDesk.Application.DTOs.Auth;
 using QuizDesk.Application.Interfaces.Auth;
 using QuizDesk.Application.Mappings;
 using QuizDesk.Domain.Entities;
