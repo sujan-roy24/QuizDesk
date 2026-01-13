@@ -1,4 +1,4 @@
-﻿namespace QuizDesk.Application.Contracts.Auth
+﻿namespace QuizDesk.Application.DTOs.Auth
 {
     public class UserDto
     {
