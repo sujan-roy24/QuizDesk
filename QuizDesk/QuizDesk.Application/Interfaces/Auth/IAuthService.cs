@@ -7,6 +7,7 @@ namespace QuizDesk.Application.Interfaces.Auth
         Task<AuthResponse> RegisterAsync(RegisterRequest request);
         Task<AuthResponse> LoginAsync(LoginRequest request);
         Task<AuthResponse> RefreshTokenAsync(string refreshToken);
+        Task<UserDto> GetProfileAsync(int id);
         Task<bool> LogoutAsync(string refreshToken);
     }
 }
