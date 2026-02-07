@@ -21,60 +21,6 @@ namespace QuizDesk.Infrastructure.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("QuizDesk.Domain.Entities.OAuthProvider", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("AuthorizationEndpoint")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("ClientId")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("ClientSecret")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("boolean");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("RedirectUri")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.PrimitiveCollection<string[]>("Scopes")
-                        .IsRequired()
-                        .HasColumnType("text[]");
-
-                    b.Property<string>("TokenEndpoint")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("UserInfoEndpoint")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("OAuthProviders");
-                });
-
             modelBuilder.Entity("QuizDesk.Domain.Entities.User", b =>
                 {
                     b.Property<int>("Id")
@@ -85,12 +31,11 @@ namespace QuizDesk.Infrastructure.Migrations
 
                     b.Property<string>("AuthMethod")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("character varying(20)");
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
                     b.Property<string>("AvatarUrl")
-                        .HasMaxLength(500)
-                        .HasColumnType("character varying(500)");
+                        .HasColumnType("text");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
@@ -100,8 +45,7 @@ namespace QuizDesk.Infrastructure.Migrations
 
                     b.Property<string>("FullName")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("character varying(200)");
+                        .HasColumnType("text");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("boolean");
@@ -130,33 +74,16 @@ namespace QuizDesk.Infrastructure.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("AccessToken")
-                        .HasColumnType("text");
-
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<bool?>("IsPrimary")
-                        .HasColumnType("boolean");
-
-                    b.Property<string>("ProfileData")
-                        .HasColumnType("text");
-
                     b.Property<string>("Provider")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
+                        .HasColumnType("text");
 
                     b.Property<string>("ProviderUserId")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("character varying(200)");
-
-                    b.Property<string>("RefreshToken")
                         .HasColumnType("text");
-
-                    b.Property<DateTime?>("TokenExpiresAt")
-                        .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
@@ -166,12 +93,7 @@ namespace QuizDesk.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
-
                     b.HasIndex("Provider", "ProviderUserId")
-                        .IsUnique();
-
-                    b.HasIndex("Provider", "UserId")
                         .IsUnique();
 
                     b.ToTable("UserOAuthAccounts");
@@ -208,8 +130,7 @@ namespace QuizDesk.Infrastructure.Migrations
 
                             b1.Property<string>("Hash")
                                 .IsRequired()
-                                .HasMaxLength(500)
-                                .HasColumnType("character varying(500)")
+                                .HasColumnType("text")
                                 .HasColumnName("PasswordHash");
 
                             b1.HasKey("UserId");
@@ -228,12 +149,6 @@ namespace QuizDesk.Infrastructure.Migrations
 
             modelBuilder.Entity("QuizDesk.Domain.Entities.UserOAuthAccount", b =>
                 {
-                    b.HasOne("QuizDesk.Domain.Entities.User", "User")
-                        .WithMany("OAuthAccounts")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.OwnsOne("QuizDesk.Domain.ValueObjects.Email", "Email", b1 =>
                         {
                             b1.Property<int>("UserOAuthAccountId")
@@ -255,13 +170,6 @@ namespace QuizDesk.Infrastructure.Migrations
 
                     b.Navigation("Email")
                         .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("QuizDesk.Domain.Entities.User", b =>
-                {
-                    b.Navigation("OAuthAccounts");
                 });
 #pragma warning restore 612, 618
         }

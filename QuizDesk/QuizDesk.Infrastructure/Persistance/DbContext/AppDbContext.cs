@@ -3,9 +3,8 @@ using QuizDesk.Domain.Entities;
 public class AppDbContext : DbContext
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
-    public DbSet<User> Users { get; set; }
-    public DbSet<UserOAuthAccount> UserOAuthAccounts { get; set; }
-    public DbSet<OAuthProvider> OAuthProviders { get; set; }
+    public DbSet<User> Users => Set<User>();
+    public DbSet<UserOAuthAccount> UserOAuthAccounts => Set<UserOAuthAccount>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -28,13 +27,8 @@ public class AppDbContext : DbContext
             entity.OwnsOne(u => u.PasswordHash, p =>
             {
                 p.Property(x => x.Hash)
-                    .HasColumnName("PasswordHash")
-                    .HasMaxLength(500);
+                    .HasColumnName("PasswordHash");
             });
-
-            entity.Property(u => u.FullName)
-                .HasMaxLength(200)
-                .IsRequired();
 
             entity.Property(u => u.Role)
                 .HasConversion<string>()
@@ -42,26 +36,13 @@ public class AppDbContext : DbContext
 
             entity.Property(u => u.AuthMethod)
                 .HasConversion<string>()
-                .HasMaxLength(20);
-
-            entity.Property(u => u.AvatarUrl)
-                .HasMaxLength(500);
+                .HasMaxLength(50);
 
         });
 
        
         modelBuilder.Entity<UserOAuthAccount>(entity =>
         {
-            entity.HasKey(o => o.Id);
-
-            entity.Property(o => o.Provider)
-                .HasMaxLength(50)
-                .IsRequired();
-
-            entity.Property(o => o.ProviderUserId)
-                .HasMaxLength(200)
-                .IsRequired();
-
             entity.OwnsOne(o => o.Email, e =>
             {
                 e.Property(x => x.Value)
@@ -72,20 +53,6 @@ public class AppDbContext : DbContext
 
             entity.HasIndex(o => new { o.Provider, o.ProviderUserId })
                 .IsUnique();
-
-            entity.HasIndex(o => new { o.Provider, o.UserId })
-                .IsUnique();
-
-            entity.HasOne(o => o.User)
-                .WithMany(u => u.OAuthAccounts)
-                .HasForeignKey(o => o.UserId)
-                .OnDelete(DeleteBehavior.Cascade);
-        });
-
-        modelBuilder.Entity<OAuthProvider>(entity =>
-        {
-            entity.Property(o => o.Scopes)
-                .HasColumnType("text[]");
         });
     }
 }

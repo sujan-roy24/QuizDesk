@@ -1,4 +1,5 @@
-﻿using QuizDesk.Application.Abstractions;
+﻿using Microsoft.EntityFrameworkCore.Storage;
+using QuizDesk.Application.Abstractions;
 
 namespace QuizDesk.Infrastructure.Persistance.UnitOfWork
 {
@@ -9,6 +10,12 @@ namespace QuizDesk.Infrastructure.Persistance.UnitOfWork
         {
             _context = context;
         }
+
+        public async Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken = default)
+        {
+            return await _context.Database.BeginTransactionAsync(cancellationToken);
+        }
+
         public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             return await _context.SaveChangesAsync(cancellationToken);
