@@ -76,7 +76,7 @@ namespace QuizDesk.Infrastructure.Services.Identity
             return true;
         }
 
-        public async Task<bool> ValidateToken(string token)
+       /* public async Task<bool> ValidateToken(string token)
         {
             if (string.IsNullOrWhiteSpace(token)) 
                 return false;
@@ -107,7 +107,7 @@ namespace QuizDesk.Infrastructure.Services.Identity
                 _logger.LogDebug(ex, "Token validation failed");
                 return false;
             }
-        }
+        }*/
 
         #region Private Methods
         private string GenerateAccessToken(User user)
