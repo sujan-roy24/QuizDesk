@@ -85,7 +85,7 @@ namespace QuizDesk.Application.Services.Auth
 
             var user = await _userRepository.GetByEmailAsync(email);
             
-            if (user == null || !user.IsActive)
+            if (user == null || user.AuthMethod != AuthMethod.Password)
             {
                 _logger.LogWarning("Login failed - user not found or inactive: {Email}", request.Email);
                 throw new UnauthorizedAccessException("Invalid credentials");
@@ -133,6 +133,14 @@ namespace QuizDesk.Application.Services.Auth
         {
             _logger.LogInformation("Logout requested");
             return await _tokenService.RevokeToken(refreshToken);
+        }
+
+        public async Task<UserDto> GetProfileAsync(int id)
+        {
+            var user = await _userRepository.GetByIdAsync(id)
+            ?? throw new KeyNotFoundException($"User with id {id} not found.");
+            
+            return user.ToDto();
         }
     }
 }

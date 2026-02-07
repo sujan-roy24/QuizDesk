@@ -11,7 +11,5 @@ namespace QuizDesk.Domain.Interfaces
             CancellationToken cancellationToken = default);
         Task<UserOAuthAccount?> GetByProviderAndUserAsync(string provider, int userId,
             CancellationToken cancellationToken = default);
-        Task<bool> IsEmailLinkedToDifferentAccountAsync(Email email, string provider, int? currentUserId = null,
-            CancellationToken cancellationToken = default);
     }
 }

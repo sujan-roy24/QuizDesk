@@ -15,7 +15,6 @@ namespace QuizDesk.Domain.Entities
         public string? AvatarUrl { get; private set; }
         public DateTime? LastLogin { get; private set; }
 
-        public virtual ICollection<UserOAuthAccount> OAuthAccounts { get; private set; } = new List<UserOAuthAccount>();
 
         private User() { }
         public static User Create(Email email, string fullName, UserRole role, AuthMethod authMethod) 

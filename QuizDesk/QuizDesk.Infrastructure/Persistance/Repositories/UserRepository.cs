@@ -43,7 +43,6 @@ namespace QuizDesk.Infrastructure.Persistance.Repositories
         public async Task<User?> GetByEmailAsync(Email email, CancellationToken cancellationToken = default)
         {
             return await _context.Users
-                .AsNoTracking()
                 .FirstOrDefaultAsync(u => u.Email.Value == email.Value, cancellationToken);
         }
 
@@ -60,14 +59,6 @@ namespace QuizDesk.Infrastructure.Persistance.Repositories
                 .AsNoTracking()
                 .Where(u => u.Role == role)
                 .ToListAsync(cancellationToken);
-        }
-
-        public async Task<User?> GetWithOAuthAccountsAsync(int id, CancellationToken cancellationToken = default)
-        {
-            return await _context.Users
-             .Include(u => u.OAuthAccounts)
-             .AsNoTracking()
-             .FirstOrDefaultAsync(u => u.Id == id, cancellationToken);
         }
 
         public Task UpdateAsync(User entity, CancellationToken cancellationToken = default)

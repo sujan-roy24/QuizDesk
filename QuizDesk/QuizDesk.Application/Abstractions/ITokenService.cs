@@ -8,6 +8,6 @@ namespace QuizDesk.Application.Abstractions
         Task<TokenResponse> GenerateTokens(User user);
         Task<TokenResponse> RefreshToken(string refreshToken);
         Task<bool> RevokeToken(string refreshToken);
-        Task<bool> ValidateToken(string token);
+        //Task<bool> ValidateToken(string token);
     }
 }

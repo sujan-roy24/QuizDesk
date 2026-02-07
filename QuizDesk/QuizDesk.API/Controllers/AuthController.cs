@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using QuizDesk.Application.DTOs.Auth;
 using QuizDesk.Application.Interfaces.Auth;
+using System.Security.Claims;
 
 namespace QuizDesk.API.Controllers
 {
@@ -61,6 +62,24 @@ namespace QuizDesk.API.Controllers
 
             SetRefreshTokenCookie(response.Tokens.RefreshToken);
 
+            return Ok(response);
+        }
+
+        [Authorize]
+        [HttpGet("profile")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        public async Task<IActionResult> GetProfile()
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier);
+
+            if (userId is  null)
+            {
+                return Unauthorized(new { message = "Need to login first" });
+            }
+            int id = int.Parse(userId.Value);
+
+            var response = await _authService.GetProfileAsync(id);
             return Ok(response);
         }
 
